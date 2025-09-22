@@ -51,27 +51,38 @@
             </a>
             
             <!-- Quick Links -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-calendar text-blue-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Jadwal Lomba</h3>
-                    <p class="text-gray-600 text-sm mb-4">Lihat jadwal presentasi dan verifikasi lapangan <strong>khusus 3 besar</strong></p>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Coming Soon
-                    </button>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Jadwal Pemaparan</h3>
+                    <p class="text-gray-600 text-sm mb-4">Lihat jadwal presentasi <strong>khusus 3 besar</strong></p>
+                    <a href="{{ route('schedules.index') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
+                        Lihat Jadwal
+                    </a>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-md p-6">
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-trophy text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Hasil Lomba</h3>
-                    <p class="text-gray-600 text-sm mb-4">Lihat hasil dan peringkat lomba</p>
-                    <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Coming Soon
-                    </button>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Klarifikasi Lapangan</h3>
+                    <p class="text-gray-600 text-sm mb-4">Lihat jadwal klarifikasi lapangan  <strong>khusus 3 besar</strong></p>
+                    <a href="{{ route('schedules.index') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
+                        Lihat Jadwal
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-video text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Video Submission</h3>
+                    <p class="text-gray-600 text-sm mb-4">Link untuk mengumpulkan video presentasi</p>
+                    <a href="{{ route('video-submissions.index') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
+                        Lihat Link
+                    </a>
                 </div>
             </div>
         </div>

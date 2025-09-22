@@ -116,23 +116,25 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Manage Schedules</h3>
                     <p class="text-gray-600 text-sm mb-4">Set presentation and verification schedules</p>
-                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                    <a href="{{ route('admin.schedules.index') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
                         Manage Schedules
-                    </button>
+                    </a>
                 </div>
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-6">
                 <div class="text-center">
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-upload text-purple-600 text-2xl"></i>
+                        <i class="fas fa-file-alt text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Upload Documents</h3>
-                    <p class="text-gray-600 text-sm mb-4">Upload SOP, Juknis, and templates</p>
-                    <a href="{{ route('admin.documents.index') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
-                        Upload Documents
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Manage Documents</h3>
+                    <p class="text-gray-600 text-sm mb-4">Upload and manage competition documents</p>
+                    <a href="{{ route('admin.documents.index') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                        View Documents
                     </a>
                 </div>
+
+                
             </div>
 
             <div class="bg-white rounded-xl shadow-md p-6">
@@ -142,9 +144,35 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Score Templates</h3>
                     <p class="text-gray-600 text-sm mb-4">Manage scoring templates and criteria</p>
-                    <button class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                    <a href="{{ route('admin.scoring-templates.index') }}" class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg transition duration-200">
                         Manage Templates
-                    </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-excel text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Participant Spreadsheets</h3>
+                    <p class="text-gray-600 text-sm mb-4">Add and manage participant spreadsheet links</p>
+                    <a href="{{ route('admin.participants.index') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                        Manage Spreadsheets
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-video text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Video Submissions</h3>
+                    <p class="text-gray-600 text-sm mb-4">Manage video submission links for participants</p>
+                    <a href="{{ route('admin.video-submissions.index') }}" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                        Manage Videos
+                    </a>
                 </div>
             </div>
 

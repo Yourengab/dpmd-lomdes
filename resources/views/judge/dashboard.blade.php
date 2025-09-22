@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Judge Dashboard - DPMD Lomdes</title>
+    <title>Dashboard Juri - DPMD Lomdes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -18,19 +18,19 @@
                     </div>
                     <div>
                         <h1 class="text-xl font-bold text-gray-800">DPMD Lomdes</h1>
-                        <p class="text-sm text-gray-600">Judge Panel</p>
+                        <p class="text-sm text-gray-600">Panel Juri</p>
                     </div>
                 </div>
                 
                 <div class="flex items-center space-x-4">
                     <div class="text-right">
                         <p class="text-gray-700 font-medium">{{ Auth::guard('judge')->user()->name }}</p>
-                        <p class="text-sm text-gray-500">{{ Auth::guard('judge')->user()->position ?? 'Judge' }}</p>
+                        <p class="text-sm text-gray-500">{{ Auth::guard('judge')->user()->position ?? 'Juri' }}</p>
                     </div>
                     <form method="POST" action="{{ route('judge.logout') }}" class="inline">
                         @csrf
                         <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-200">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            <i class="fas fa-sign-out-alt mr-2"></i>Keluar
                         </button>
                     </form>
                 </div>
@@ -42,15 +42,67 @@
     <div class="max-w-7xl mx-auto px-4 py-8">
         <!-- Welcome Card -->
         <div class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl text-white p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-2">Welcome, {{ Auth::guard('judge')->user()->name }}</h2>
-            <p class="text-green-100">Judge Panel - Desa & Kelurahan Competition Assessment</p>
+            <h2 class="text-2xl font-bold mb-2">Selamat Datang, {{ Auth::guard('judge')->user()->name }}</h2>
+            <p class="text-green-100">Panel Juri - Penilaian Lomba Desa & Kelurahan</p>
             @if(Auth::guard('judge')->user()->indicator_assigned)
                 <p class="text-green-100 mt-2">
                     <i class="fas fa-clipboard-list mr-2"></i>
-                    Assigned Indicator: <strong>{{ Auth::guard('judge')->user()->indicator_assigned }}</strong>
+                    Indikator Ditugaskan: <strong>{{ Auth::guard('judge')->user()->indicator_assigned }}</strong>
                 </p>
             @endif
         </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
+                        <p class="text-gray-600">Total Template</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-file-alt text-green-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
+                        <p class="text-gray-600">Administrasi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-presentation text-purple-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
+                        <p class="text-gray-600">Pemaparan</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-search text-orange-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
+                        <p class="text-gray-600">Klarifikasi Lapangan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -60,7 +112,7 @@
                         <i class="fas fa-building text-blue-600 text-xl"></i>
                     </div>
                     <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Participants</p>
+                        <p class="text-gray-600 text-sm">Peserta</p>
                         <p class="text-2xl font-bold text-gray-800">0</p>
                     </div>
                 </div>
@@ -72,7 +124,7 @@
                         <i class="fas fa-star text-green-600 text-xl"></i>
                     </div>
                     <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Scores Given</p>
+                        <p class="text-gray-600 text-sm">Nilai Diberikan</p>
                         <p class="text-2xl font-bold text-gray-800">0</p>
                     </div>
                 </div>
@@ -84,7 +136,7 @@
                         <i class="fas fa-sticky-note text-yellow-600 text-xl"></i>
                     </div>
                     <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Notes Written</p>
+                        <p class="text-gray-600 text-sm">Catatan Dibuat</p>
                         <p class="text-2xl font-bold text-gray-800">0</p>
                     </div>
                 </div>
@@ -96,7 +148,7 @@
                         <i class="fas fa-calendar text-purple-600 text-xl"></i>
                     </div>
                     <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Upcoming Events</p>
+                        <p class="text-gray-600 text-sm">Agenda Mendatang</p>
                         <p class="text-2xl font-bold text-gray-800">0</p>
                     </div>
                 </div>
@@ -105,29 +157,18 @@
 
         <!-- Quick Actions -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-list text-blue-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">View Participants</h3>
-                    <p class="text-gray-600 text-sm mb-4">See list of villages and kelurahan participating</p>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        View List
-                    </button>
-                </div>
-            </div>
+           
 
             <div class="bg-white rounded-xl shadow-md p-6">
                 <div class="text-center">
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-star text-green-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Input Scores</h3>
-                    <p class="text-gray-600 text-sm mb-4">Assess participants based on indicators</p>
-                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Start Scoring
-                    </button>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Masukan Nilai</h3>
+                    <p class="text-gray-600 text-sm mb-4">Nilai Desa/Kelurahan</p>
+                    <a href="{{ route('judge.scoring') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                        Mulai Penilaian
+                    </a>
                 </div>
             </div>
 
@@ -136,10 +177,10 @@
                     <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-sticky-note text-yellow-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Presentation Notes</h3>
-                    <p class="text-gray-600 text-sm mb-4">Write notes during presentations</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Catatan Pemaparan</h3>
+                    <p class="text-gray-600 text-sm mb-4">Tulis catatan selama pemaparan</p>
                     <button class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Add Notes
+                        Tambah Catatan
                     </button>
                 </div>
             </div>
@@ -149,10 +190,10 @@
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-calendar text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Schedule</h3>
-                    <p class="text-gray-600 text-sm mb-4">View presentation and verification schedule</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Jadwal</h3>
+                    <p class="text-gray-600 text-sm mb-4">Lihat jadwal pemaparan dan verifikasi</p>
                     <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        View Schedule
+                        Lihat Jadwal
                     </button>
                 </div>
             </div>
@@ -162,10 +203,10 @@
                     <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-chart-bar text-indigo-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">My Assessments</h3>
-                    <p class="text-gray-600 text-sm mb-4">Review your scores and notes</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Penilaian Saya</h3>
+                    <p class="text-gray-600 text-sm mb-4">Lihat nilai dan catatan Anda</p>
                     <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        View History
+                        Lihat Riwayat
                     </button>
                 </div>
             </div>
@@ -175,11 +216,24 @@
                     <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-file-alt text-red-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Documents</h3>
-                    <p class="text-gray-600 text-sm mb-4">Access participant documents and templates</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Dokumen</h3>
+                    <p class="text-gray-600 text-sm mb-4">Akses dokumen dan template peserta</p>
                     <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        View Documents
+                        Lihat Dokumen
                     </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-excel text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Spreadsheet Peserta</h3>
+                    <p class="text-gray-600 text-sm mb-4">Lihat spreadsheet peserta terbaru</p>
+                    <a href="{{ route('judge.participant.spreadsheet') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                        Lihat Spreadsheet
+                    </a>
                 </div>
             </div>
         </div>
@@ -187,12 +241,12 @@
         <!-- Recent Activity -->
         <div class="mt-8 bg-white rounded-xl shadow-md p-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                <i class="fas fa-clock mr-2"></i>Recent Activity
+                <i class="fas fa-clock mr-2"></i>Aktivitas Terbaru
             </h3>
             <div class="text-center py-8 text-gray-500">
                 <i class="fas fa-history text-4xl text-gray-300 mb-4"></i>
-                <p>No recent activity</p>
-                <p class="text-sm">Your scoring and assessment history will appear here</p>
+                <p>Tidak ada aktivitas terbaru</p>
+                <p class="text-sm">Riwayat penilaian dan aktivitas Anda akan muncul di sini</p>
             </div>
         </div>
     </div>

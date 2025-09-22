@@ -1,11 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Judge;
+use App\Models\ScoringTemplate;
 
 class JudgeController extends Controller
 {
@@ -16,6 +17,15 @@ class JudgeController extends Controller
     {
         $judges = Judge::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.judges.index', compact('judges'));
+    }
+
+    public function administrasi($id)
+    {
+        $template = ScoringTemplate::findOrFail($id);
+        if (!in_array($template->category, ['tahap_administrasi', 'tahap_administrasi_desa', 'tahap_administrasi_kelurahan'])) {
+            abort(404);
+        }
+        return view('judge.scoring.administrasi', compact('template'));
     }
 
     /**
@@ -143,6 +153,34 @@ class JudgeController extends Controller
     }
 
     /**
+     * Show the scoring templates page with category filtering.
+     */
+    public function scoring(Request $request)
+    {
+        $category = $request->get('category');
+
+        $query = \App\Models\ScoringTemplate::with('adminDocument')->latest();
+
+        if (in_array($category, ['tahap_administrasi_desa', 'tahap_administrasi_kelurahan'])) {
+            $map = [
+                'tahap_administrasi_desa' => 'village',
+                'tahap_administrasi_kelurahan' => 'district',
+            ];
+
+            $query->whereHas('adminDocument', function ($q) use ($map, $category) {
+                $q->where('category', $map[$category]);
+            });
+        } elseif ($category) {
+            $query->where('category', $category);
+        }
+
+        $scoringTemplates = $query->get();
+
+        return view('judge.scoring', compact('scoringTemplates', 'category'));
+    }
+
+
+    /**
      * Handle judge logout.
      */
     public function logout(Request $request)
@@ -150,7 +188,113 @@ class JudgeController extends Controller
         Auth::guard('judge')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return redirect('/judge/login');
+    }
+
+    /**
+     * Show Tahap Administrasi Desa scoring form with village admin documents.
+     */
+    public function administrasiDesaForm($id)
+    {
+        $template = ScoringTemplate::whereIn('category', 'tahap_administrasi')->findOrFail($id);
+
+        if (!in_array($template->category, ['tahap_administrasi'])) {
+            abort(404);
+        }
+
+        // Get all village admin documents to display in the scoring form
+        $adminDocuments = \App\Models\AdminDocument::where('category', 'village')->latest()->get();
+
+        return view('judge.scoring.administrasi', compact('template', 'adminDocuments'));
+    }
+
+    /**
+     * Show Tahap Administrasi Kelurahan scoring form with district admin documents.
+     */
+    public function administrasiKelurahanForm($id)
+    {
+        $template = ScoringTemplate::whereIn('category', 'tahap_administrasi')->findOrFail($id);
+        dd($template);
+
+        if (!in_array($template->category, ['tahap_administrasi'])) {
+            abort(404);
+        }
+
+        // Get all district admin documents to display in the scoring form
+        $adminDocuments = \App\Models\AdminDocument::where('category', 'district')->latest()->get();
+
+
+        return view('judge.scoring.administrasi', compact('template', 'adminDocuments'));
+    }
+
+    /**
+     * Show Tahap Pemaparan Questions scoring form.
+     */
+    public function pemaparanQuestions($id)
+    {
+        $template = ScoringTemplate::findOrFail($id);
+
+        if ($template->category !== 'tahap_pemaparan') {
+            abort(404);
+        }
+
+        return view('judge.scoring.pemaparan-questions', compact('template'));
+    }
+
+    /**
+     * Show Tahap Pemaparan Village scoring form.
+     */
+    public function pemaparanVillage($id)
+    {
+        $template = ScoringTemplate::findOrFail($id);
+
+        if ($template->category !== 'tahap_pemaparan') {
+            abort(404);
+        }
+
+        return view('judge.scoring.pemaparan-village', compact('template'));
+    }
+
+    /**
+     * Show Tahap Pemaparan District scoring form.
+     */
+    public function pemaparanDistrict($id)
+    {
+        $template = ScoringTemplate::findOrFail($id);
+
+        if ($template->category !== 'tahap_pemaparan') {
+            abort(404);
+        }
+
+        return view('judge.scoring.pemaparan-district', compact('template'));
+    }
+
+    /**
+     * Show Tahap Klarifikasi Lapangan scoring form.
+     */
+    public function klarifikasiForm($id)
+    {
+        $template = ScoringTemplate::findOrFail($id);
+
+        if ($template->category !== 'tahap_klarifikasi_lapangan') {
+            abort(404);
+        }
+
+        return view('judge.scoring.klarifikasi', compact('template'));
+    }
+
+    /**
+     * Show Daftar Inovasi scoring form.
+     */
+    public function inovasiForm($id)
+    {
+        $template = ScoringTemplate::findOrFail($id);
+
+        if ($template->category !== 'daftar_inovasi') {
+            abort(404);
+        }
+
+        return view('judge.scoring.inovasi', compact('template'));
     }
 }
