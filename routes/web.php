@@ -10,6 +10,7 @@ use App\Http\Controllers\ScoringTemplateController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\VideoSubmissionController;
+use App\Http\Controllers\ClarificationController;
 
 Route::get('/', function () {
     $villageDocuments = \App\Models\AdminDocument::where('category', 'village')->latest()->take(5)->get();
@@ -58,10 +59,17 @@ Route::prefix('admin')->group(function () {
 
         // Video Submissions CRUD routes
         Route::resource('video-submissions', VideoSubmissionController::class, ['as' => 'admin']);
+
+    // Clarifications CRUD routes
+    Route::resource('clarifications', ClarificationController::class, ['as' => 'admin']);
     });
 });
 
 // Judge Routes
+Route::prefix('judge')->group(function () {
+    Route::get('/schedule', [JudgeController::class, 'schedule'])->name('judge.schedule');
+    Route::get('/clarification-schedule', [JudgeController::class, 'clarificationSchedule'])->name('judge.clarification.schedule');
+});
 Route::prefix('judge')->group(function () {
     // Public judge routes (login)
     Route::get('/login', [JudgeController::class, 'showLoginForm'])->name('judge.login');

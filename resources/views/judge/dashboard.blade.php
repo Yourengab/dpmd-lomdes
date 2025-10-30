@@ -52,112 +52,7 @@
             @endif
         </div>
 
-        <!-- Quick Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
-                        <p class="text-gray-600">Total Template</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-file-alt text-green-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
-                        <p class="text-gray-600">Administrasi</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-presentation text-purple-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
-                        <p class="text-gray-600">Pemaparan</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-search text-orange-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-800">-</h3>
-                        <p class="text-gray-600">Klarifikasi Lapangan</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-building text-blue-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Peserta</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-star text-green-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Nilai Diberikan</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-sticky-note text-yellow-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Catatan Dibuat</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-calendar text-purple-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Agenda Mendatang</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Actions -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-           
 
             <div class="bg-white rounded-xl shadow-md p-6">
                 <div class="text-center">
@@ -171,56 +66,16 @@
                     </a>
                 </div>
             </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-sticky-note text-yellow-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Catatan Pemaparan</h3>
-                    <p class="text-gray-600 text-sm mb-4">Tulis catatan selama pemaparan</p>
-                    <button class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Tambah Catatan
-                    </button>
-                </div>
-            </div>
-
             <div class="bg-white rounded-xl shadow-md p-6">
                 <div class="text-center">
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-calendar text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Jadwal</h3>
-                    <p class="text-gray-600 text-sm mb-4">Lihat jadwal pemaparan dan verifikasi</p>
-                    <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Lihat Jadwal
-                    </button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-chart-bar text-indigo-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Penilaian Saya</h3>
-                    <p class="text-gray-600 text-sm mb-4">Lihat nilai dan catatan Anda</p>
-                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Lihat Riwayat
-                    </button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-file-alt text-red-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Dokumen</h3>
-                    <p class="text-gray-600 text-sm mb-4">Akses dokumen dan template peserta</p>
-                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Lihat Dokumen
-                    </button>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Jadwal Pemaparan</h3>
+                    <p class="text-gray-600 text-sm mb-4">Lihat jadwal pemaparan peserta</p>
+                    <a href="{{ route('judge.schedule') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                        Lihat Jadwal Pemaparan
+                    </a>
                 </div>
             </div>
 
@@ -231,9 +86,15 @@
                     </div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-2">Spreadsheet Peserta</h3>
                     <p class="text-gray-600 text-sm mb-4">Lihat spreadsheet peserta terbaru</p>
-                    <a href="{{ route('judge.participant.spreadsheet') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Lihat Spreadsheet
-                    </a>
+                        @if (!empty($sheetLink))
+                            <a href="{{ $sheetLink }}" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                                Lihat Spreadsheet
+                            </a>
+                        @else
+                            <button class="bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+                                Belum ada sheet peserta
+                            </button>
+                        @endif
                 </div>
             </div>
         </div>

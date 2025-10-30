@@ -1,15 +1,32 @@
 <?php
 namespace App\Http\Controllers;
 
-
+use App\Models\Judge;
+use App\Models\Participant;
 use Illuminate\Http\Request;
+use App\Models\ScoringTemplate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Judge;
-use App\Models\ScoringTemplate;
 
 class JudgeController extends Controller
 {
+    /**
+     * Show clarification schedule for current year.
+     */
+    public function clarificationSchedule()
+    {
+        $tahun = date('Y');
+        $clarifications = \App\Models\Clarification::whereYear('created_at', $tahun)->orderBy('date', 'asc')->get();
+        return view('judge.clarification_schedule', compact('clarifications'));
+    }
+    /**
+     * Show the schedule page for judges.
+     */
+    public function schedule()
+    {
+        $schedules = \App\Models\Schedule::orderBy('date', 'asc')->get();
+        return view('judge.schedule', compact('schedules'));
+    }
     /**
      * Display a listing of judges.
      */
@@ -149,7 +166,10 @@ class JudgeController extends Controller
      */
     public function dashboard()
     {
-        return view('judge.dashboard');
+        $tahun = date('Y');
+        $participantSheet = Participant::whereYear('created_at', $tahun)->orderByDesc('created_at')->first();
+        $sheetLink = $participantSheet ? $participantSheet->link : null;
+        return view('judge.dashboard', compact('sheetLink'));
     }
 
     /**

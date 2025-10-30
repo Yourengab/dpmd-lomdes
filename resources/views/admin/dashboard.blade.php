@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - DPMD Lomdes</title>
+    <title>Dasbor Admin - DPMD Lomdes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -18,16 +18,16 @@
                     </div>
                     <div>
                         <h1 class="text-xl font-bold text-gray-800">DPMD Lomdes</h1>
-                        <p class="text-sm text-gray-600">Desa & Kelurahan Competition</p>
+                        <p class="text-sm text-gray-600">Kompetisi Desa & Kelurahan</p>
                     </div>
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <span class="text-gray-700">Welcome, {{ Auth::guard('admin')->user()->name }}</span>
+                    <span class="text-gray-700">Selamat datang, {{ Auth::guard('admin')->user()->name }}</span>
                     <form method="POST" action="{{ route('admin.logout') }}" class="inline">
                         @csrf
-                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-200">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-200">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Keluar
                         </button>
                     </form>
                 </div>
@@ -39,72 +39,32 @@
     <div class="max-w-7xl mx-auto px-4 py-8">
         <!-- Welcome Card -->
         <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-2">Welcome to Admin Dashboard</h2>
-            <p class="text-blue-100">Manage the Desa & Kelurahan Competition for Bali Province</p>
+            <h2 class="text-2xl font-bold mb-2">Selamat datang di Dasbor Admin</h2>
+            <p class="text-blue-100">Kelola Kompetisi Desa & Kelurahan untuk Provinsi Bali</p>
         </div>
-
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-users text-green-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Total Judges</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-building text-blue-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Participants</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-calendar text-yellow-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Schedules</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-file-alt text-purple-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-600 text-sm">Documents</p>
-                        <p class="text-2xl font-bold text-gray-800">0</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Quick Actions -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-search-location text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Jadwal Klarifikasi Lapangan</h3>
+                    <p class="text-gray-600 text-sm mb-4">Lihat, tambah, sunting, dan hapus jadwal klarifikasi lapangan (desa/kelurahan)</p>
+                    <a href="{{ route('admin.clarifications.index') }}" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
+                        Kelola Jadwal Klarifikasi
+                    </a>
+                </div>
+            </div>
             <div class="bg-white rounded-xl shadow-md p-6">
                 <div class="text-center">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-user-plus text-blue-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Manage Judges</h3>
-                    <p class="text-gray-600 text-sm mb-4">Add, edit, or remove judges from the system</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Kelola Juri</h3>
+                    <p class="text-gray-600 text-sm mb-4">Tambah, sunting, atau hapus juri dari sistem</p>
                     <a href="{{ route('admin.judges.index') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
-                        Manage Judges
+                        Kelola Juri
                     </a>
                 </div>
             </div>
@@ -114,10 +74,10 @@
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-calendar-plus text-green-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Manage Schedules</h3>
-                    <p class="text-gray-600 text-sm mb-4">Set presentation and verification schedules</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Kelola Jadwal</h3>
+                    <p class="text-gray-600 text-sm mb-4">Atur jadwal presentasi dan verifikasi</p>
                     <a href="{{ route('admin.schedules.index') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 inline-block">
-                        Manage Schedules
+                        Kelola Jadwal
                     </a>
                 </div>
             </div>
@@ -127,10 +87,10 @@
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-file-alt text-purple-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Manage Documents</h3>
-                    <p class="text-gray-600 text-sm mb-4">Upload and manage competition documents</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Kelola Dokumen</h3>
+                    <p class="text-gray-600 text-sm mb-4">Unggah dan kelola dokumen kompetisi</p>
                     <a href="{{ route('admin.documents.index') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        View Documents
+                        Lihat Dokumen
                     </a>
                 </div>
 
@@ -142,10 +102,10 @@
                     <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-clipboard-list text-yellow-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Score Templates</h3>
-                    <p class="text-gray-600 text-sm mb-4">Manage scoring templates and criteria</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Spreadsheet Penilaian</h3>
+                    <p class="text-gray-600 text-sm mb-4">Kelola spreadsheet penilaian dan untuk tim penilai</p>
                     <a href="{{ route('admin.scoring-templates.index') }}" class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Manage Templates
+                        Kelola Template
                     </a>
                 </div>
             </div>
@@ -155,10 +115,10 @@
                     <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-file-excel text-green-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Participant Spreadsheets</h3>
-                    <p class="text-gray-600 text-sm mb-4">Add and manage participant spreadsheet links</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Spreadsheet Peserta</h3>
+                    <p class="text-gray-600 text-sm mb-4">Tambahkan dan kelola tautan spreadsheet peserta</p>
                     <a href="{{ route('admin.participants.index') }}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Manage Spreadsheets
+                        Kelola Spreadsheet
                     </a>
                 </div>
             </div>
@@ -168,37 +128,11 @@
                     <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-video text-teal-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Video Submissions</h3>
-                    <p class="text-gray-600 text-sm mb-4">Manage video submission links for participants</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Pengiriman Video</h3>
+                    <p class="text-gray-600 text-sm mb-4">Kelola tautan pengiriman video peserta</p>
                     <a href="{{ route('admin.video-submissions.index') }}" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Manage Videos
+                        Kelola Video
                     </a>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-chart-bar text-red-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">View Results</h3>
-                    <p class="text-gray-600 text-sm mb-4">Monitor scores and publish final results</p>
-                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        View Results
-                    </button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-cog text-indigo-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">System Settings</h3>
-                    <p class="text-gray-600 text-sm mb-4">Configure system settings and preferences</p>
-                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition duration-200">
-                        Settings
-                    </button>
                 </div>
             </div>
         </div>
